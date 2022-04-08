@@ -1,0 +1,3 @@
+class ItemOutOfStock < StandardError
+end
+ 
