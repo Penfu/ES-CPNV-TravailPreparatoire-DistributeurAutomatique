@@ -14,7 +14,7 @@ class TestSale < MiniTest::Test
     ])
   end
 
-  def test_sales
+  def test_item_sales_timestamp_and_best_sales_group_by_hour
     money = 1000.00
     item = "A01"
     dates = [ 
