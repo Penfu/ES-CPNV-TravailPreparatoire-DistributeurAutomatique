@@ -40,7 +40,7 @@ class TestSale < MiniTest::Test
 
     best_sales = @machine.best_sales
     best_sales.each_with_index do |sale, i|
-        assert_equal(excpected_sales[i], "Hour #{sale.first} generated a revenue of #{"%.2f" % [sale.last]}")
+        assert_equal(excpected_sales[i], "Hour #{sale[:hour]} generated a revenue of #{"%.2f" % [sale[:amount]]}")
     end
   end
 end

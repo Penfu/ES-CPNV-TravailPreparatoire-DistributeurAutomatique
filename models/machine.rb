@@ -42,8 +42,8 @@ class Machine
     def best_sales
         @sales
         .group_by { |sale| sale.datetime.hour }
-        .map {|hour, sales| [hour, sales.sum { |sale| sale.item.price }] }
-        .sort_by { |hour, sales| sales }.reverse.take(3)
+        .map {|hour, sales| {hour: hour, amount: sales.sum { |sale| sale.item.price }} }
+        .sort_by { |hour, sales| sales }.last(3)
     end
 
     def set_time(datetime)
