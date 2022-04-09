@@ -21,7 +21,7 @@ class TestMachine < MiniTest::Test
     item = "A01"
 
     assert_raises NotEnoughMoney do @machine.choose(item) end
-    assert_equal(0, @machine.get_balance)
+    assert_equal(0, @machine.balance)
   end
 
   def test_choose_an_item_without_enough_money_raises_exception
@@ -30,7 +30,7 @@ class TestMachine < MiniTest::Test
     @machine.insert(money)
 
     assert_raises NotEnoughMoney do @machine.choose(item) end
-    assert_equal(money, @machine.get_change)
+    assert_equal(money, @machine.change)
   end
 
   def test_choose_an_item_out_of_stock_raises_exception
@@ -44,7 +44,7 @@ class TestMachine < MiniTest::Test
 
     assert_equal(excepected_message, @machine.choose(item))
     assert_raises ItemOutOfStock do @machine.choose(item) end
-    assert_equal(excepected_change, @machine.get_change)
+    assert_equal(excepected_change, @machine.change)
   end
 
   def test_choose_an_invalid_item_raises_exception
@@ -54,7 +54,7 @@ class TestMachine < MiniTest::Test
     @machine.insert(money)
 
     assert_raises ItemNotFound do @machine.choose(item) end
-    assert_equal(money, @machine.get_change)
+    assert_equal(money, @machine.change)
   end
 
   def test_that_change_is_equal_to_inserted_money_minus_selected_article_price
@@ -67,7 +67,7 @@ class TestMachine < MiniTest::Test
     @machine.insert(money)
 
     assert_equal(excepected_message, @machine.choose(item))
-    assert_equal(excepected_change, @machine.get_change)
+    assert_equal(excepected_change, @machine.change)
   end
 
   def test_that_change_is_correct_after_selecting_an_item
@@ -81,8 +81,8 @@ class TestMachine < MiniTest::Test
     @machine.insert(money)
 
     assert_equal(excepected_message, @machine.choose(item))
-    assert_equal(excepected_change, @machine.get_change)
-    assert_equal(excepected_balance, @machine.get_balance)
+    assert_equal(excepected_change, @machine.change)
+    assert_equal(excepected_balance, @machine.balance)
   end
 
   def test_that_change_is_correct_after_selecting_multiple_items
@@ -107,7 +107,7 @@ class TestMachine < MiniTest::Test
     assert_equal(excepected_messages[2], @machine.choose(items[2]))
     assert_equal(excepected_messages[3], @machine.choose(items[3]))
     assert_equal(excepected_messages[4], @machine.choose(items[4]))
-    assert_equal(excepected_change, @machine.get_change)
-    assert_equal(excepected_balance, @machine.get_balance)
+    assert_equal(excepected_change, @machine.change)
+    assert_equal(excepected_balance, @machine.balance)
   end 
 end

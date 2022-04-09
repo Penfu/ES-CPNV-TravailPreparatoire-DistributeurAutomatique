@@ -17,7 +17,7 @@ class TestSale < MiniTest::Test
   def test_item_sales_timestamp_and_best_sales_group_by_hour
     money = 1000.00
     item = "A01"
-    dates = [ 
+    datetimes = [ 
         "2020-01-01T20:30:00",
         "2020-03-01T23:30:00",
         "2020-03-04T09:22:00",
@@ -33,8 +33,8 @@ class TestSale < MiniTest::Test
     ]
 
     @machine.insert(money)
-    dates.each do |date|
-        @machine.set_time(date)
+    datetimes.each do |datetime|
+        @machine.datetime = datetime
         @machine.choose(item)
     end
 

@@ -1,5 +1,5 @@
 class Sale
-    attr_accessor :item, :datetime
+    attr_reader :item, :datetime
 
     def initialize(item, datetime)
         @item = item
